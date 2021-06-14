@@ -1,0 +1,22 @@
+#esgi-main.dashboard {
+    .esgi-section {padding: 40px 40px 0 40px;
+        .esgi-dashboard-component {height: calc( ~"(50vh - 116px)"); background: #fff; margin-bottom: 40px; padding: 24px; box-sizing: border-box;
+            &.vertical {height: calc( ~"(100vh - 192px)"); margin-bottom: 15px;
+                .esgi-dashboard-comment {.clear;
+                    img {float: left; margin-right: 16px; object-fit: cover; height: 30px; border-radius: 50px; overflow: hidden;}
+                    .esgi-comment-title {font-size: 1.25rem; color: @font-color-1; margin-bottom: 16px; font-weight: bold; display: block;float: left;}
+                    p {margin-bottom: 8px; font-size: 1rem; color: @font-color-1; display: block;float: left;}
+                    .esgi-comment-date,
+                    a {margin-bottom: 24px; font-size: 0.75rem; color: @font-color-1; font-weight: lighter;float: left;}
+                }
+            }
+            span {color: @font-color-1; font-size: 2rem; display: block; text-align: center;}
+            .esgi-page-preview {display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+                img {object-fit: cover; width: 20%; cursor: pointer; margin: 16px;}
+                .esgi-add-page {width: 20%; height: 100px; border: 2px @primary-color dashed; border-radius: 3px; position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; margin: 0 24px;
+                    &:after {content: "\e905"; .icon; color: @font-color-1; font-size: 3rem; position: relative; transform: rotate(45deg)}
+                }
+            }
+        }
+    }
+}

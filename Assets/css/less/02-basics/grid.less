@@ -1,0 +1,19 @@
+/*---------------------------------
+ *  Grid System
+ *---------------------------------*/
+.esgi-grid{position: relative; margin-left:-(@gutterWidth/2);margin-right:-(@gutterWidth/2);.clear;
+    &-cell{float:left;}
+
+    // Grid sizes > %
+    .generateWidth(@gridnb);
+    .generateWidth(@n, @i: 1) when (@i =< @n) {
+        &@{i} {
+            width: (@i * 100% / @n);
+        }
+        .generateWidth(@n, (@i + 1));
+    }
+
+    // Gutter
+    &-gutter{margin-left:(@gutterWidth/2);margin-right:(@gutterWidth/2);}
+}
+.esgi-clear {.clear}

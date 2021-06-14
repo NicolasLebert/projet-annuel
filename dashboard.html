@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="Assets\images\favicon\apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Assets\images\favicon\/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Assets\images\favicon\/favicon-16x16.png">
+    <link rel="manifest" href="Assets\images\favicon\/site.webmanifest">
+    <link rel="mask-icon" href="Assets\images\favicon\safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>Dashboard</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="Assets\css\prod\styles.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="Assets\css\styles-dev.css">
+    <script src="Assets\js\jquery.min.js"></script>
+    <script src="Assets\js\esgi-scripts.js"></script>
+</head>
+
+<body>
+    <header id="esgi-header">
+        <img class="esgi-logo" src="Assets\images\esgi.png" alt="logo">
+
+        <div class="esgi-header-tools">
+            <a href="/account">Bonjour Admin</a>
+            <a href="/front">Site internet</a>
+            <a href="/help">Aide</a>
+            <a href="/logout">Déconnecter</a>
+            <img src="./Assets/images/profilPicture.jpg" alt="">
+        </div>
+    </header>
+    
+    <main id="esgi-main" class="dashboard">
+        <aside>
+            <nav>
+                <div class="esgi-aside-nav">
+                    <a class="esgi-nav-labels" href="">Dashboard</a>
+                    <a class="esgi-nav-labels" href="">Pages</a>
+                    <a class="esgi-nav-labels" href="">Médias</a>
+                    <a class="esgi-nav-labels" href="">Articles</a>
+                    <a class="esgi-nav-labels" href="">Commentaires</a>
+                    <a class="esgi-nav-labels" href="">Apparence</a>
+                </div>
+                <div class="esgi-aside-nav">
+                    <a class="esgi-nav-labels" href="">Utilisateur</a>
+                    <a class="esgi-nav-labels" href="">Paramètres</a>
+                </div>
+            </nav>
+        </aside>
+        <div class="esgi-section">
+            <div class="esgi-grid">
+                <div class="esgi-grid-cell esgi-grid8">
+                    <div class="esgi-grid-gutter">
+                        <div class="esgi-dashboard-component">
+                            <span>Vos pages</span>
+                            <div class="esgi-page-preview">
+                                <img src="Assets/images/pagePreview-01.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-02.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-03.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-02.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-03.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-02.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-01.jpg" alt="pagePreview">
+                                <div class="esgi-add-page">&nbsp;</div>
+                            </div>
+                        </div>
+
+                        <div class="esgi-dashboard-component">
+                            <span>Vos articles</span>
+                            <div class="esgi-page-preview">
+                                <img src="Assets/images/pagePreview-01.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-02.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-03.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-02.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-02.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-01.jpg" alt="pagePreview">
+                                <img src="Assets/images/pagePreview-03.jpg" alt="pagePreview">
+                                <div class="esgi-add-page">&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="esgi-grid-cell esgi-grid4">
+                    <div class="esgi-grid-gutter">
+                        <div class="esgi-dashboard-component vertical">
+                            <div class="esgi-dashboard-comment">
+                                <img src="Assets/images/profilPicture-01.jpg" alt="profilPicture">
+                                <span class="esgi-comment-title">titre du commentaire</span>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error debitis labore recusandae sunt fugiat repellat vel velit minima corrupti? Velit magnam repellendus repudiandae quidem enim cumque debitis quasi tenetur voluptate.</p>
+                                <span class="esgi-comment-date">il y a 3 min</span>
+                                <a href="/reply">Répondre</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esgi-clear"></div>
+            </div>
+            <div class="esgi-clear"></div>
+        </div>
+    </main>
+
+    <footer id="esgi-footer">
+            <p>Bienvenue sur votre Backoffice</p>
+            <p>© All rights reserved</p>
+    </footer>
+</body>
+</html>

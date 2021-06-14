@@ -1,0 +1,171 @@
+/*---------------------------------
+ *  Reset
+ *---------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, th, td,
+table, caption, tbody, tfoot, thead, tr, 
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {content: ''; content: none;}
+table {border-collapse: collapse; border-spacing: 0;}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ul {
+    list-style: none;
+}
+strong, b {
+    font-weight:bold;
+}
+em, i {
+    font-style:italic;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Reset */
+input[type=date],
+input[type=datetime], 
+input[type=datetime-local],
+input[type=email],
+input[type=month], 
+input[type=number],
+input[type=password],
+input[type=range],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week],
+input[type=reset],
+input[type=button],
+input[type=submit],
+input[type=checkbox],
+input[type=radio],
+input[type=file],
+label,
+select,
+button,
+textarea{display:inline-block;margin:0;padding:0;border:0;font-size:1.1em;line-height:1;font-family:inherit;font-weight:300;white-space:normal;vertical-align:middle;background:none;}
+ 
+/* Remove the outer glow in Webkit */
+input:focus,
+textarera:focus{outline:0;}
+
+/* input button */  
+input[type=button]{min-width: 160px;} 
+
+/* Box Sizing Reset */
+input,
+textarea{box-sizing: content-box;}
+
+button,
+input[type=reset],
+input[type=button],
+input[type=submit],
+input[type=checkbox],
+input[type=radio],
+select{.boxed;}
+
+/* Fields regroupment */
+fieldset{margin:20px 0 0;border:none;
+    legend{display:block;width:100%;margin:0 0 12px;font-size:1.1em;text-align:center;color:#000;font-family:inherit;}
+}
+
+/* Labels */
+label{font-size:1em;/* color:#aeaaab; */}
+
+/* Text Inputs */
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=range],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week]{width:98%;margin:3px 0 15px;padding:5px 1%;border:1px solid #d4d4d4;background:#f9f9f9;}
+
+/* Date/Time/week... */
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=month],
+input[type=time],
+input[type=week]{width:48%}
+
+/* Search Input (WebKit reset) */
+/* Make webkit render the search input like a normal text field */
+input[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;}
+
+/* Turn off the recent search for webkit. It adds about 15px padding on the left */
+::-webkit-search-decoration{display:none;}
+
+/* File Uploads */
+input[type=file]{width:99%;margin:3px 0 15px;padding:0 1% 0 0;border:1px solid #d4d4d4;background:#f9f9f9;}
+::-webkit-file-upload-button{overflow:visible;width:auto;display:inline-block !important;cursor:pointer;font-size:1em;padding:5px 7px;} 
+
+/* Textarea */
+textarea{ overflow:auto;width:98%;min-height:50px;margin:7px 0 15px;padding:5px 1%;font-size:1em;vertical-align:top;border:1px solid #d4d4d4;background:#f9f9f9;resize:vertical;}
+ 
+/* Select */
+select{width:100%;margin:7px 0 15px;padding:5px 1%;border:1px solid #d4d4d4;background:#f9f9f9;}
+select[multiple]{vertical-align:top;}
+
+/* Radios/Cbx */
+input[type=checkbox],
+input[type=radio]{width:13px;height:13px;margin-left:10px;
+    &:first-child{margin-left:0;}
+}

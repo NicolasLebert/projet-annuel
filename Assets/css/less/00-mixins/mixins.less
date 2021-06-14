@@ -1,0 +1,118 @@
+// Transition 
+.transition-duration(@duration: 0.35s) {
+  -moz-transition-duration: @duration;
+  -webkit-transition-duration: @duration;
+  -o-transition-duration: @duration;
+  transition-duration: @duration;
+}
+
+// Ease 
+.ease(@duration: 0.25s) {
+  -webkit-transition: all @duration ease;
+  -moz-transition: all @duration ease;
+  -ms-transition: all @duration ease;
+  -o-transition: all @duration ease;
+  transition: all @duration ease;
+}
+
+// Rounded
+.rounded(@radius:80px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+// Opacity
+.opacity(@opacity: 0.5) {
+  -moz-opacity: @opacity; 
+  -khtml-opacity: @opacity;
+  -webkit-opacity: @opacity;
+  opacity: @opacity;
+  @opperc: @opacity * 100;
+  -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
+  filter: ~"alpha(opacity=@{opperc})"; 
+}
+
+// Clear
+.clear{
+  &:after{ 
+    content:""; 
+    display:table; 
+    clear:both;
+    line-height: 0px;
+  }
+}
+
+// Boxed
+.boxed{ box-sizing: border-box;}
+
+// Rotation 
+.rotate (@deg:10deg) {
+  -webkit-transform: rotate(@deg);
+  -moz-transform:    rotate(@deg);
+  -ms-transform:     rotate(@deg);
+  -o-transform:      rotate(@deg);
+}  
+
+// Shadow
+.drop-shadow  {
+  -moz-box-shadow:1px 1px 2px 1px #dfdfdf;
+  -webkit-box-shadow:1px 1px 2px 1px #dfdfdf;
+  -o-box-shadow:1px 1px 2px 1px #dfdfdf;
+  box-shadow:1px 1px 2px 1px #dfdfdf; 
+}
+
+// Custom border radius
+.border-radiuses (@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+  -webkit-border-top-right-radius:    @topright;
+  -webkit-border-bottom-right-radius: @bottomright;
+  -webkit-border-bottom-left-radius:  @bottomleft;
+  -webkit-border-top-left-radius:     @topleft;
+
+  -moz-border-radius-topright:        @topright;
+  -moz-border-radius-bottomright:     @bottomright;
+  -moz-border-radius-bottomleft:      @bottomleft;
+  -moz-border-radius-topleft:         @topleft;
+
+  border-top-right-radius:            @topright;
+  border-bottom-right-radius:         @bottomright;
+  border-bottom-left-radius:          @bottomleft;
+  border-top-left-radius:             @topleft;
+
+  -moz-background-clip:    padding; 
+  -webkit-background-clip: padding-box; 
+  background-clip:         padding-box; 
+}
+
+// Fonticon
+.icon{
+  display: inline-block;
+  font-family: 'icon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Display flex
+.flex{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// Scroll bar
+.scroll{
+  &::-webkit-scrollbar {-webkit-appearance:none;width:5px;}
+  &::-webkit-scrollbar-thumb {border-radius:3px;background-color:rgba(0,0,0,.20);box-shadow:0 0 1px rgba(255,255,255,.3);}
+}
+
+// Font size
+.font-size(@size : 16) {font-size: (@size / 16)rem;}
