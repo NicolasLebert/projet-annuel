@@ -6,7 +6,9 @@
     aside { width: 300px; background: @primary-color;
         nav {display: flex; flex-direction: column; justify-content: space-between; height: 100%; text-align: center; box-sizing: border-box;
             .esgi-aside-nav {margin: 24px 0;
-                .esgi-nav-labels {padding: 8px 0; display: block; color: @bg-color;}
+                .esgi-nav-labels {padding: 8px 16px; display: inline-block; color: @bg-color; margin: 0 60px;
+                    &.active:after {}
+                }
                 .esgi-nav-labels:visited {color: @bg-color;}
             }
         }

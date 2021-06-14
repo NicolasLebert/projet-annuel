@@ -1,13 +1,18 @@
 #esgi-main.dashboard {
     .esgi-section {padding: 40px 40px 0 40px;
         .esgi-dashboard-component {height: calc( ~"(50vh - 116px)"); background: #fff; margin-bottom: 40px; padding: 24px; box-sizing: border-box;
-            &.vertical {height: calc( ~"(100vh - 192px)"); margin-bottom: 15px;
-                .esgi-dashboard-comment {.clear;
-                    img {float: left; margin-right: 16px; object-fit: cover; height: 30px; border-radius: 50px; overflow: hidden;}
-                    .esgi-comment-title {font-size: 1.25rem; color: @font-color-1; margin-bottom: 16px; font-weight: bold; display: block;float: left;}
+            &.vertical {height: calc( ~"(100vh - 192px)"); margin-bottom: 15px; overflow: auto;
+                &> span {margin-bottom: 16px;}
+                &::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);border-radius: 10px;background-color: #F5F5F5;}
+                &::-webkit-scrollbar {width: 8px;background-color: #F5F5F5;}
+                &::-webkit-scrollbar-thumb {border-radius: 10px;-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);background-color: @primary-color;}
+                .esgi-dashboard-comment {.clear; position: relative;
+                    img {float: left; margin-right: 16px; object-fit: cover; height: 40px; border-radius: 50px; overflow: hidden;}
+                    .esgi-comment-title {font-size: 1.25rem; color: @font-color-1; margin-bottom: 16px; font-weight: bold; display: block;float: left; margin-top: 8px;}
                     p {margin-bottom: 8px; font-size: 1rem; color: @font-color-1; display: block;float: left;}
                     .esgi-comment-date,
-                    a {margin-bottom: 24px; font-size: 0.75rem; color: @font-color-1; font-weight: lighter;float: left;}
+                    a {margin-bottom: 24px; font-size: 0.75rem; color: @color-3; font-weight: lighter;float: left; margin-left: 8px;}
+                    &.fav:before {content: "\e93b"; .icon; position: absolute; top: 4px; right: 8px; color: #f9ca24; font-size: 1.5rem;}
                 }
             }
             span {color: @font-color-1; font-size: 2rem; display: block; text-align: center;}
