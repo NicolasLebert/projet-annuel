@@ -3,7 +3,10 @@
  *---------------------------------*/
  #esgi-header {background: @secondary-color;display: flex; justify-content: space-between; align-items: center; padding: 0 104px;
      //logo
-     .esgi-logo {height: 30px; object-fit: cover; padding-left: 8px; margin: 16px 0; }
+     .esgi-site {display: flex; align-items: center;
+        .esgi-logo {height: 30px; object-fit: cover; padding-left: 8px; margin: 16px 0; }
+        h1 {display: inline-block; margin: 0 0 0 64px; font-size: 2rem; color: @bg-color;}
+     }
 
      .esgi-header-tools {display: flex; align-items: center;
         img {object-fit: cover; height: 40px; border-radius: 50px; overflow: hidden; margin-left: 24px}

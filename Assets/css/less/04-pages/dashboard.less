@@ -6,20 +6,22 @@
                 &::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);border-radius: 10px;background-color: #F5F5F5;}
                 &::-webkit-scrollbar {width: 8px;background-color: #F5F5F5;}
                 &::-webkit-scrollbar-thumb {border-radius: 10px;-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);background-color: @primary-color;}
-                .esgi-dashboard-comment {.clear; position: relative;
+                .esgi-dashboard-comment {.clear; position: relative; cursor: pointer;
                     img {float: left; margin-right: 16px; object-fit: cover; height: 40px; border-radius: 50px; overflow: hidden;}
                     .esgi-comment-title {font-size: 1.25rem; color: @font-color-1; margin-bottom: 16px; font-weight: bold; display: block;float: left; margin-top: 8px;}
                     p {margin-bottom: 8px; font-size: 1rem; color: @font-color-1; display: block;float: left;}
                     .esgi-comment-date,
                     a {margin-bottom: 24px; font-size: 0.75rem; color: @color-3; font-weight: lighter;float: left; margin-left: 8px;}
                     &.fav:before {content: "\e93b"; .icon; position: absolute; top: 4px; right: 8px; color: #f9ca24; font-size: 1.5rem;}
+                    &:not(.fav):before {content: "\e914"; .icon; position: absolute; top: 4px; right: 8px; color: #f9ca24; font-size: 1.5rem;}
                 }
             }
             span {color: @font-color-1; font-size: 2rem; display: block; text-align: center;}
             .esgi-page-preview {display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
                 img {object-fit: cover; width: 20%; cursor: pointer; margin: 16px;}
                 .esgi-add-page {width: 20%; height: 100px; border: 2px @primary-color dashed; border-radius: 3px; position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; margin: 0 24px;
-                    &:after {content: "\e905"; .icon; color: @font-color-1; font-size: 3rem; position: relative; transform: rotate(45deg)}
+                    &:after {content: "\e905"; .icon; color: @font-color-1; font-size: 3rem; position: relative; transform: rotate(45deg); .ease}
+                    &:hover:after {font-weight: bolder;}
                 }
             }
         }
