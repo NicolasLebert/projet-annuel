@@ -1,0 +1,25 @@
+
+/:
+  controller : "Main" 
+  action : "default"
+
+/404:
+  controller : "Main" 
+  action : "page404"
+
+/login:
+  controller : "Security" 
+  action : "login"
+
+/logout:
+  controller : "Security" 
+  action : "logout"
+
+/register:
+  controller : "Security" 
+  action : "register"
+
+
+/toto:
+  controller : "Main" 
+  action : "toto"
