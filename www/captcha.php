@@ -4,43 +4,49 @@ session_start();
 
 header("Content-Type: image/png");
 
-/* 
-	TP : A faire :
-
-	- utilisation d'une police (type) aléatoire en fonction de ce que l'on trouve dans le dossier "typo" au format ttf
-	- taille du texte aléatoire
-	- angle du texte aléatoire
-	- couleur de fond aléatoire
-	- couleurs des caractères aléatoires
-	- position des caractères aléatoires
-	- Ajout d'un nombre aléatoire de formes aléatoires (rond carré trait ...) de mêmes couleurs que les caractères sur l'image.
-
-
-	-> ATTENTION LE CAPTCHA DOIT TOUJOURS ETRE LISIBLE
-
-*/
-
-
-
 
 //Création de notre image
 $image = imagecreate(400, 200);
 
 //La première couleur créée est la couleur de fond de mon image
-$white = imagecolorallocate($image, 255, 255, 255);
-$black = imagecolorallocate($image, 0, 0, 0);
+$backgroundColor = imagecolorallocate($image, rand(0, 250), rand(0, 250), rand(0, 250));
+
+
+// Chargement des typos
+$fontLists = glob("fonts/*.ttf");
 
 
 $chars = "abcdefghijklmnopqrstuvwxyz0123456789";
 $chars = str_shuffle($chars);
-
 $captcha = substr($chars, 0, rand(6, 8));
+$lengthCaptcha = strlen($captcha);
+$x = rand(20, 40);
+$y = rand(60, 80);
+
 
 $_SESSION["captcha"] = $captcha;
 
-imagestring($image, 5, 100, 100, $captcha, $black);
+for ($i = 0; $i < $lengthCaptcha; $i++) {
+	$colors[] = imagecolorallocate($image, rand(0, 100), rand(0, 100), rand(0, 100));
+
+	imagettftext($image, rand(30, 60), rand(-50, 50), $x, $y, $colors[$i], $fontLists[array_rand($fontLists)], $captcha[$i]);
+
+	$x += rand(40, 60);
+}
+
+$figures = rand(2, 4);
+for ($i = 0; $i < $figures; $i++) {
+
+	$fig = rand(1, 2);
+
+	if ($fig == 1) {
+		imageline($image, rand(0, 400), rand(0, 100), rand(0, 400), rand(0, 100), $colors[array_rand($colors)]);
+	}
+	else {
+		imagerectangle($image, rand(0, 400), rand(0, 100), rand(0, 400), rand(0, 100), $colors[array_rand($colors)]);
+	}
+}
 
 
 //Affichage de notre image
 imagepng($image);
-
