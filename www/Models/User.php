@@ -245,8 +245,32 @@ class User extends Database
                 ];
 
     }
+    public function formLogin () {
 
+        return [
+                    "action"=>"",
+                    "method"=>"POST",
+                    "submit"=>"Connexion",
+                    "inputs"=> [
+                                    "email"=>[
+                                                    "type"=>"email", 
+                                                    "unicity"=>"email",
+                                                    "required"=>true,
+                                                    "placeholder"=>"Votre Email",
+                                                    "error"=>"Votre email n'est pas correct"
+                                                ],
+                                    "password"=>[
+                                                    "type"=>"password", 
+                                                    "required"=>true,
+                                                    "placeholder"=>"Votre mot de passe",
+                                                    "minLength"=>4,
+                                                    "maxLength"=>32,
+                                                    "error"=>"Votre mot de passe doit faire entre 4 et 32 caractères"
+                                                ]
+                                ]
+                ];
 
+    }
 }
 
 

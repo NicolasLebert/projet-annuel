@@ -12,7 +12,26 @@ class Security
 
 	public function login() {
 		//Afficher la vue login à l'interieur du template front
+		$user = new User();
+		$configForm = $user->formLogin();
+		$form = new Form($configForm);
+		$fvobj = new FormVerification();
+
 		$v = new View("Security/login", "front");
+		if (!empty($_POST)) {
+			$listOfErrors = $fvobj->checkConnexion($_POST, $configForm);
+			if(empty($listOfErrors)){
+				//Insertion en base de données + redirection
+				/*
+				$user->setFirstname("Yves");
+				$user->setLastname("SKRZYPCZYK");
+				$user->setEmail("y.skrzypczyk@gmail.com");
+				$user->setPwd("Test1234");
+				$user->save();
+				*/
+			}
+			//Sinon afficher dans la vue les erreurs
+		}
 	}
 
 	public function logout() {

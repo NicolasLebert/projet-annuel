@@ -4,11 +4,7 @@ namespace App\Core;
 
 class Database
 {
-
 	protected $db;
-	protected $inutile1;
-	protected $inutile2;
-	protected $inutile3;
 
 	//Connexion à la base de données
 	public function __construct()
@@ -26,6 +22,14 @@ class Database
 
 		} 
 
+	}
+
+	public function ConnexionValidation ($email, $password) {
+		$sql =  'SELECT email, password FROM User WHERE email="'.$email.'" AND password="'.$password.'"';
+		$result = $this->db->query($sql);
+		print_r($result->fetch());
+		// $result['email'];
+		return $result;
 	}
 
 
