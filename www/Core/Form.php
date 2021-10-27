@@ -69,10 +69,6 @@ class Form
 		$this->html .= "</form>";
 	}
 
-
-
-
-
 	public function renderHtml() {
 		return $this->html;
 	}

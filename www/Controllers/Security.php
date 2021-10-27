@@ -31,13 +31,13 @@ class Security
 			$listOfErrors = FormVerification::check($_POST, $configForm);
 			if(empty($listOfErrors)){
 				//Insertion en base de données + redirection
-				/*
+				
 				$user->setFirstname("Yves");
 				$user->setLastname("SKRZYPCZYK");
 				$user->setEmail("y.skrzypczyk@gmail.com");
 				$user->setPwd("Test1234");
 				$user->save();
-				*/
+				
 			}
 			//Sinon afficher dans la vue les erreurs
 		}
