@@ -19,7 +19,6 @@
   controller : "Security" 
   action : "register"
 
-
-/toto:
-  controller : "Main" 
-  action : "toto"
+/notification:
+  controller : "Settings"
+  action : "notification"

@@ -231,13 +231,13 @@ class User extends Database
                                                     "confirm"=>"password",
                                                     "error"=>"Les mots de passe ne correspondent pas"
                                                 ],
-                                    "captcha"=>[
-                                                    "type"=>"captcha", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Saisir le captcha",
-                                                    "src"=>"/captcha.php",
-                                                    "error"=>"Le captcha ne correspond pas"
-                                                ]
+                                    // "captcha"=>[
+                                    //                 "type"=>"captcha", 
+                                    //                 "required"=>true,
+                                    //                 "placeholder"=>"Saisir le captcha",
+                                    //                 "src"=>"/captcha.php",
+                                    //                 "error"=>"Le captcha ne correspond pas"
+                                    //             ]
                                                             
 
 

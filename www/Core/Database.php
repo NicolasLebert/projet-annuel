@@ -51,7 +51,7 @@ class Database
 		if (is_null($this->getId())) {
 
 
-			$sql = " INSERT INTO gkvw0_".$table." 
+			$sql = " INSERT INTO gkvw0_".strtolower($table)." 
 			(". implode(",", array_keys($data)) .") 
 			VALUES 
 			(:". implode(",:", array_keys($data)) .")";

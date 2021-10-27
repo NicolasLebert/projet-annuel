@@ -2,10 +2,11 @@
 
 namespace App\Core;
 
-class FormVerification 
+class FormVerification
 {
 
-	public static function check ($data, $config) {
+	public static function check($data, $config)
+	{
 
 		echo "<pre>";
 		print_r($data);
@@ -24,17 +25,19 @@ class FormVerification
 		return true; // false si erreur
 	}
 
-	public static function checkEmail($email){
+	public static function checkEmail($email)
+	{
 
-		return true // or false
+		return true; // or false
 	}
-	public static function checkMinLength($string){
+	public static function checkMinLength($string)
+	{
 
-		return true // or false
+		return true; // or false
 	}
-	public static function checkMaxLength($string){
+	public static function checkMaxLength($string)
+	{
 
-		return true // or false
+		return true; // or false
 	}
-
 }
