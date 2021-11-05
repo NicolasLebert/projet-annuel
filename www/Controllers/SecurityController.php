@@ -5,9 +5,11 @@ namespace App\Controllers;
 use App\Core\View;
 use App\Core\Form;
 use App\Core\FormVerification;
+use App\Core\Security;
+use App\Core\Mailer;
 use App\Models\User;
 
-class Security
+class SecurityController
 {
 
 	public function login()
@@ -43,7 +45,10 @@ class Security
 					$user->setLastname($_POST["lastname"]);
 					$user->setEmail($_POST["email"]);
 					$user->setPwd($_POST["password"]);
+					$token = Security::generateToken();
+					$user->setTokenConfirmRegister($token);
 					$user->save();
+					Mailer::sendActivationMail($user);
 					print('OHYEAH');
 				} else {
 					$v->__set("errors", ["Vos mots de passe ne correspondent pas"]);
@@ -58,6 +63,6 @@ class Security
 	}
 
 	public function confirmRegister(){
-		$user = new User();
+		$user = new User(); 
 	}
 }

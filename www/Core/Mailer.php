@@ -18,14 +18,36 @@ require 'vendor/autoload.php';
 class Mailer
 {
 
-
     private $mail;
+    private $subject;
+    private $body;
 
 
     private function __construct()
     {
-        //Instantiation and passing `true` enables exceptions
         $this->mail = new PHPMailer(true);
+    }
+
+    public static function setSubject($subject){
+        $this->subject = $subject;
+    }
+
+    public function getSubject(){
+        return $this->subject;
+    }
+
+    public function setBody($body){
+        $this->body = $body;
+    }
+
+    public function getBody(){
+        return $this->body;
+    }
+
+
+
+    public static function sendActivationMail($user){
+        self::setSubject('New user');
     }
 
 

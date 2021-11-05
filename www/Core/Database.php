@@ -50,7 +50,6 @@ class Database
 
 		if (is_null($this->getId())) {
 
-
 			$sql = " INSERT INTO gkvw0_".strtolower($table)." 
 			(". implode(",", array_keys($data)) .") 
 			VALUES 
@@ -62,13 +61,15 @@ class Database
 			
 		}else {
 			//UPDATE
+			foreach (array_keys($columns) as $key) {
+				$updates[] = "$key = :$key";
+			}
+			$queryPrepared = $this->pdo->prepare("UPDATE " . $this->table . "SET " . implode(', ', $updates) . " WHERE id = " . $this->getId());
+
+			$queryPrepared->execute( $data );
+
 		}
-
-		
-
-
 	}
-
 }
 
 

@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\View;
 
-class Settings
+class SettingsController
 {
 
 	public function notification() {

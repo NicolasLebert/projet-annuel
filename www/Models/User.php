@@ -17,8 +17,13 @@ class User extends Database
 	protected $status = 0;
 	protected $role = 0;
 
+    protected $tokenConfirmRegister = '';
+    protected $tokenAuth = '';
+
+
 	private $dateInserted;
 	private $dateUpdated;
+
 
 
 	//Il s'agit d'une surcharge du constructeur Parent
@@ -179,6 +184,21 @@ class User extends Database
         $this->dateUpdated = $dateUpdated;
     }
 
+    public function getTokenConfirmRegister(){
+		return $this->tokenConfirmRegister;
+	}
+
+    public function setTokenConfirmRegister($token){
+		return $this->tokenConfirmRegister = $token;
+	}
+
+    public function getTokenAuth(){
+        return $this->tokenAuth;
+    }
+
+    public function setTokenAuth($token){
+        return $this->tokenAuth  = $token;
+    }
 
 
     public function formRegister () {

@@ -27,24 +27,6 @@ class FormVerification
 		return $errors; // false si erreur
 	}
 
-<<<<<<< HEAD
-	public static function checkEmail($email)
-	{
-
-		return true; // or false
-	}
-	public static function checkMinLength($string)
-	{
-
-		return true; // or false
-	}
-	public static function checkMaxLength($string)
-	{
-
-		return true; // or false
-	}
-}
-=======
 	// public static function checkEmail($email){
 
 	// 	return true // or false
@@ -59,4 +41,3 @@ class FormVerification
 	// }
 
 }
->>>>>>> main
