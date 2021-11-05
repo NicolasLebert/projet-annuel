@@ -10,6 +10,8 @@ class FormVerification
 		echo "<pre>";
 		print_r($data);
 		print_r($config);
+
+		$errors = [];
 		//A faire :
 		//Il faut vérifier tous les champs que l'internaute aura rempli
 		//Pour vérifier un champs il faut se baser sur plusieurs informations
@@ -21,20 +23,20 @@ class FormVerification
 		// -> confirm, vérifier qu'il correspond au bon champs
 		// -> unicity, la valeur n'est pas déjà en base de données
 
-		return true; // false si erreur
+		return $errors; // false si erreur
 	}
 
-	public static function checkEmail($email){
+	// public static function checkEmail($email){
 
-		return true // or false
-	}
-	public static function checkMinLength($string){
+	// 	return true // or false
+	// }
+	// public static function checkMinLength($string){
 
-		return true // or false
-	}
-	public static function checkMaxLength($string){
+	// 	return true // or false
+	// }
+	// public static function checkMaxLength($string){
 
-		return true // or false
-	}
+	// 	return true // or false
+	// }
 
 }

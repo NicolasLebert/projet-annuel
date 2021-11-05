@@ -193,7 +193,6 @@ class User extends Database
                                                     "required"=>true,
                                                     "placeholder"=>"Votre Prénom",
                                                     "minLength"=>2,
-                                                    "value"=>"Yves",
                                                     "error"=>"Votre prénom doit faire au minimum 2 caractères"
                                                 ],
                                     "lastname"=>[
