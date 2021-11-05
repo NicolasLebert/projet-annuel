@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controllers;
 
@@ -10,49 +10,54 @@ use App\Models\User;
 class Security
 {
 
-	public function login() {
+	public function login()
+	{
 		//Afficher la vue login à l'interieur du template front
 		$v = new View("Security/login", "front");
 	}
 
-	public function logout() {
+	public function logout()
+	{
 		echo "Security/logout";
 		//Redirection sur la home
 	}
 
-	public function register() {
+	public function register()
+	{
 
 		$user = new User();
 		$configForm = $user->formRegister();
 
 		$form = new Form($configForm);
 
+		$v = new View("Security/register", "front");
+
+
 		if (!empty($_POST)) {
 			$listOfErrors = FormVerification::check($_POST, $configForm);
-			if(empty($listOfErrors)){
-				//Insertion en base de données + redirection
-				
-				$user->setFirstname("Yves");
-				$user->setLastname("SKRZYPCZYK");
-				$user->setEmail("y.skrzypczyk@gmail.com");
-				$user->setPwd("Test1234");
-				$user->save();
-				
+			if (empty($listOfErrors)) {
+				if ($_POST['password'] == $_POST['passwordConfirm']) {
+					//Insertion en base de données + redirection
+					print('HOLAAA');
+					$user->setFirstname($_POST["firstname"]);
+					$user->setLastname($_POST["lastname"]);
+					$user->setEmail($_POST["email"]);
+					$user->setPwd($_POST["password"]);
+					$user->save();
+					print('OHYEAH');
+				} else {
+					$v->__set("errors", ["Vos mots de passe ne correspondent pas"]);
+				}
 			}
-			//Sinon afficher dans la vue les erreurs
+			return $listOfErrors;
 		}
 
 
-		$v = new View("Security/register", "front");
 		$v->form = $form->renderHtml();
-		$v->listOfErrors = $listOfErrors??[];
-
-
-
+		$v->listOfErrors = $listOfErrors ?? [];
 	}
-	
+
+	public function confirmRegister(){
+		$user = new User();
+	}
 }
-
-
-
-
