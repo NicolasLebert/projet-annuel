@@ -28,7 +28,7 @@ class Mailer
         $this->mail = new PHPMailer(true);
     }
 
-    public static function setSubject($subject){
+    public function setSubject($subject){
         $this->subject = $subject;
     }
 
@@ -45,9 +45,9 @@ class Mailer
     }
 
 
-
     public static function sendActivationMail($user){
-        self::setSubject('New user');
+         return (new self)->setSubject('New user');
+         return (new self)->setBody('This is the body');
     }
 
 
