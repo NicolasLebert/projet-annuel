@@ -27,8 +27,10 @@ class SecurityController
 	public function register()
 	{
 
-		$user = new User();
-		$configForm = $user->formRegister();
+		Security::getConnectedUser();
+
+		$userRegister = new User();
+		$configForm = $userRegister->formRegister();
 
 		$form = new Form($configForm);
 
@@ -41,14 +43,14 @@ class SecurityController
 				if ($_POST['password'] == $_POST['passwordConfirm']) {
 					//Insertion en base de données + redirection
 					print('HOLAAA');
-					$user->setFirstname($_POST["firstname"]);
-					$user->setLastname($_POST["lastname"]);
-					$user->setEmail($_POST["email"]);
-					$user->setPwd($_POST["password"]);
+					$userRegister->setFirstname($_POST["firstname"]);
+					$userRegister->setLastname($_POST["lastname"]);
+					$userRegister->setEmail($_POST["email"]);
+					$userRegister->setPwd($_POST["password"]);
 					$token = Security::generateToken();
-					$user->setTokenConfirmRegister($token);
-					$user->save();
-					Mailer::sendActivationMail($user);
+					$userRegister->setToken($token);
+					$userRegister->save();
+					Mailer::sendActivationMail($userRegister);
 					print('OHYEAH');
 				} else {
 					$v->__set("errors", ["Vos mots de passe ne correspondent pas"]);
