@@ -1,24 +1,24 @@
 
 /:
-  controller : "Main" 
+  controller : "MainController" 
   action : "default"
 
 /404:
-  controller : "Main" 
+  controller : "MainController" 
   action : "page404"
 
 /login:
-  controller : "Security" 
+  controller : "SecurityController" 
   action : "login"
 
 /logout:
-  controller : "Security" 
+  controller : "SecurityController" 
   action : "logout"
 
 /register:
-  controller : "Security" 
+  controller : "SecurityController" 
   action : "register"
 
 /notification:
-  controller : "Settings"
+  controller : "SettingsController"
   action : "notification"
