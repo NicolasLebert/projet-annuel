@@ -46,8 +46,8 @@ class Mailer
 
 
     public static function sendActivationMail($user){
+        return (new self)->setBody('This is the body');
          return (new self)->setSubject('New user');
-         return (new self)->setBody('This is the body');
     }
 
 
