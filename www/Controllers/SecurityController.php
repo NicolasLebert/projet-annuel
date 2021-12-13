@@ -7,6 +7,7 @@ use App\Core\Form;
 use App\Core\FormVerification;
 use App\Core\Security;
 use App\Core\Mailer;
+use App\Core\Singleton;
 use App\Models\User;
 
 class SecurityController
@@ -27,9 +28,12 @@ class SecurityController
 	public function register()
 	{
 
-		Security::getConnectedUser();
+		session_start();
 
+		
 		$userRegister = new User();
+		// $bdd = $userRegister->getPDO();
+
 		$configForm = $userRegister->formRegister();
 
 		$form = new Form($configForm);
@@ -50,8 +54,18 @@ class SecurityController
 					$token = Security::generateToken();
 					$userRegister->setToken($token);
 					$userRegister->save();
-					Mailer::sendActivationMail($userRegister);
-					print('OHYEAH');
+
+					$query = "SELECT * FROM gkvw0_users WHERE email = ?";
+					$prepare = $userRegister->getPDO()->prepare($query);
+
+					// $prepare->execute(array($userRegister->getEmail()));
+					// if ($prepare->rowCount() > 0) {
+					//     $resInfosUser = $prepare->fetch();
+					//     $_SESSION['id'] = $resInfosUser;
+					// }
+					$userRegister->getUser($_POST["email"]);
+					// Mailer::sendActivationMail($userRegister);
+					// print('OHYEAH :' . $token);
 				} else {
 					$v->__set("errors", ["Vos mots de passe ne correspondent pas"]);
 				}
@@ -64,7 +78,8 @@ class SecurityController
 		$v->listOfErrors = $listOfErrors ?? [];
 	}
 
-	public function confirmRegister(){
-		$user = new User(); 
+	public function confirmRegister()
+	{
+		$user = new User();
 	}
 }

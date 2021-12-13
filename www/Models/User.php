@@ -3,40 +3,54 @@
 namespace App\Models;
 
 use App\Core\Database;
+use App\Core\Singleton;
 
 class User extends Database
 {
 
-	private $id = null;
+    private $id = null;
 
-	protected $firstname;
-	protected $lastname;
-	protected $email;
-	protected $pwd;
+    protected $firstname;
+    protected $lastname;
+    protected $email;
+    protected $pwd;
 
-	protected $status = 0;
-	protected $role = 0;
-    protected $token = '';
+    protected $status = 0;
+    protected $role = 0;
+    protected $token = 4;
     // protected $tokenAuth = '';
 
 
-	private $dateInserted;
-	private $dateUpdated;
+    private $dateInserted;
+    private $dateUpdated;
 
 
 
-	//Il s'agit d'une surcharge du constructeur Parent
-	public function __construct()
-	{
-		parent::__construct();
-	}
+    //Il s'agit d'une surcharge du constructeur Parent
+    public function __construct()
+    {
+        // parent::__construct();
+    }
+
+    public function getUser()
+    {
+        $mail = $this->getEmail();
+        $mail = htmlspecialchars($mail);
+        $query = "SELECT * FROM gkvw0_users WHERE email = ?";
+        $prepare = $this->getPDO()->prepare($query);
+        $prepare->execute(array($mail));
+        if ($prepare->rowCount() > 0) {
+            $resInfosUser = $prepare->fetch();
+            $_SESSION['id'] = $resInfosUser;
+        }
+        echo "    HALLLLLLOOOOO :" . $mail . "     ";
+    }
 
 
-
-
-	public function __toString(){
-		return $this->firstname." ".$this->lastname;
-	}
+    public function __toString()
+    {
+        return $this->firstname . " " . $this->lastname;
+    }
 
 
     /**
@@ -183,13 +197,15 @@ class User extends Database
         $this->dateUpdated = $dateUpdated;
     }
 
-    public function getToken(){
-		return $this->token;
-	}
+    public function getToken()
+    {
+        return $this->token;
+    }
 
-    public function setToken($token){
-		return $this->token = $token;
-	}
+    public function setToken($token)
+    {
+        return $this->token = $token;
+    }
 
     // public function getTokenAuth(){
     //     return $this->tokenAuth;
@@ -200,73 +216,67 @@ class User extends Database
     // }
 
 
-    public function formRegister () {
+    public function formRegister()
+    {
 
         return [
-                    "action"=>"",
-                    "method"=>"POST",
-                    "submit"=>"S'inscrire",
-                    "inputs"=> [
-                                    "firstname"=>[
-                                                    "type"=>"text", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre Prénom",
-                                                    "minLength"=>2,
-                                                    "error"=>"Votre prénom doit faire au minimum 2 caractères"
-                                                ],
-                                    "lastname"=>[
-                                                    "type"=>"text", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre Nom",
-                                                    "minLength"=>2,
-                                                    "error"=>"Votre nom doit faire au minimum 2 caractères"
-                                                ],
-                                    "country"=>[
-                                                    "type"=>"select", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre Pays",
-                                                    "options"=>["fr","en"]
-                                                ],
-                                    "email"=>[
-                                                    "type"=>"email", 
-                                                    "unicity"=>"email",
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre Email",
-                                                    "error"=>"Votre email n'est pas correct"
-                                                ],
-                                    "password"=>[
-                                                    "type"=>"password", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre mot de passe",
-                                                    "minLength"=>4,
-                                                    "maxLength"=>32,
-                                                    "error"=>"Votre mot de passe doit faire entre 4 et 32 caractères"
-                                                ],
-                                    "passwordConfirm"=>[
-                                                    "type"=>"password", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Confirmation du mot de passe",
-                                                    "confirm"=>"password",
-                                                    "error"=>"Les mots de passe ne correspondent pas"
-                                                ],
-                                    "captcha"=>[
-                                                    "type"=>"captcha", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Saisir le captcha",
-                                                    "src"=>"/captcha.php",
-                                                    "error"=>"Le captcha ne correspond pas"
-                                                ]
-                                                            
+            "action" => "",
+            "method" => "POST",
+            "submit" => "S'inscrire",
+            "inputs" => [
+                "firstname" => [
+                    "type" => "text",
+                    "required" => true,
+                    "placeholder" => "Votre Prénom",
+                    "minLength" => 2,
+                    "error" => "Votre prénom doit faire au minimum 2 caractères"
+                ],
+                "lastname" => [
+                    "type" => "text",
+                    "required" => true,
+                    "placeholder" => "Votre Nom",
+                    "minLength" => 2,
+                    "error" => "Votre nom doit faire au minimum 2 caractères"
+                ],
+                "country" => [
+                    "type" => "select",
+                    "required" => true,
+                    "placeholder" => "Votre Pays",
+                    "options" => ["fr", "en"]
+                ],
+                "email" => [
+                    "type" => "email",
+                    "unicity" => "email",
+                    "required" => true,
+                    "placeholder" => "Votre Email",
+                    "error" => "Votre email n'est pas correct"
+                ],
+                "password" => [
+                    "type" => "password",
+                    "required" => true,
+                    "placeholder" => "Votre mot de passe",
+                    "minLength" => 4,
+                    "maxLength" => 32,
+                    "error" => "Votre mot de passe doit faire entre 4 et 32 caractères"
+                ],
+                "passwordConfirm" => [
+                    "type" => "password",
+                    "required" => true,
+                    "placeholder" => "Confirmation du mot de passe",
+                    "confirm" => "password",
+                    "error" => "Les mots de passe ne correspondent pas"
+                ],
+                "captcha" => [
+                    "type" => "captcha",
+                    "required" => true,
+                    "placeholder" => "Saisir le captcha",
+                    "src" => "/captcha.php",
+                    "error" => "Le captcha ne correspond pas"
+                ]
 
 
-                                ]
-                ];
 
+            ]
+        ];
     }
-
-
 }
-
-
-
-

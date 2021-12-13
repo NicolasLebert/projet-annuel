@@ -2,74 +2,67 @@
 
 namespace App\Core;
 
+
 class Database
 {
 
-	protected $db;
-	protected $inutile1;
-	protected $inutile2;
-	protected $inutile3;
+    protected static $pdo = null; 
 
-	//Connexion à la base de données
-	public function __construct()
-	{
-		try{
-			
-			$this->db = new \PDO("mysql:host=database;dbname=mvcdocker2;port=3306","root","password");
-			
-			$this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-    		$this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+    private function __construct()
+    {
+    }
 
-		}catch(\Exception $e){
+    public function getPDO()
+    {
+        if(is_null(self::$pdo)){
+            try {
+                self::$pdo = new \PDO("mysql:host=database;dbname=mvcdocker2;port=3306", "root", "password");
+                self::$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+                self::$pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+            } catch (\Exception $e) {
+    
+                die("Erreur SQL : " . $e->getMessage());
+            }
+        }
+       return self::$pdo;
+    }
 
-			die("Erreur SQL : ".$e->getMessage());
+    public function save()
+    {
+        //Construire de manière dynamique ma requête SQL
+        //exemple générer INSERT INTO gkvw0_user (firstname, lastname, email, pwd) VALUES (......);
 
-		} 
-
-	}
-
-
-	//Insérer en base de données l'objet
-	//Ou le mettre à jour (INSERT ou UPDATE)
-	public function save() 
-	{
-		//Construire de manière dynamique ma requête SQL
-		//exemple générer INSERT INTO gkvw0_user (firstname, lastname, email, pwd) VALUES (......);
-
-		$classExploded = explode("\\", get_called_class());
-		$table = end($classExploded) ;
+        $classExploded = explode("\\", get_called_class());
+        $table = end($classExploded);
 
 
 
-		$columns = get_object_vars($this);
-		$toDelete = get_class_vars(get_class());
-		$data = array_diff_key($columns, $toDelete);
+        $columns = get_object_vars($this);
+        $toDelete = get_class_vars(get_class());
+        $data = array_diff_key($columns, $toDelete);
 
 
 
 
-		if (is_null($this->getId())) {
+        if (is_null($this->getId())) {
 
-			$sql = " INSERT INTO gkvw0_".strtolower($table)." 
-			(". implode(",", array_keys($data)) .") 
+            $sql = " INSERT INTO gkvw0_" . strtolower($table) . " 
+			(" . implode(",", array_keys($data)) . ") 
 			VALUES 
-			(:". implode(",:", array_keys($data)) .")";
+			(:" . implode(",:", array_keys($data)) . ")";
 
-			$queryPrepared = $this->db->prepare($sql);
+            $queryPrepared = $this->getPDO()->prepare($sql);
 
-			$queryPrepared->execute( $data );
-			
-		}else {
-			//UPDATE
-			foreach (array_keys($columns) as $key) {
-				$updates[] = "$key = :$key";
-			}
-			$queryPrepared = $this->pdo->prepare("UPDATE " . $this->table . "SET " . implode(', ', $updates) . " WHERE id = " . $this->getId());
+            $queryPrepared->execute($data);
+            echo "HALLO // :" . var_dump($data);
+        } else {
+            //UPDATE
+            foreach (array_keys($columns) as $key) {
+                $updates[] = "$key = :$key";
+            }
+            $queryPrepared = $this->getPDO()->prepare("UPDATE " . $this->table . "SET " . implode(', ', $updates) . " WHERE id = " . $this->getId());
 
-			$queryPrepared->execute( $data );
-
-		}
-	}
+            $queryPrepared->execute($data);
+        }
+    }
 }
-
-

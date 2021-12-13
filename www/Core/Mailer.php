@@ -21,6 +21,7 @@ class Mailer
     private $mail;
     private $subject;
     private $body;
+    private $recipent;
 
 
     private function __construct()
@@ -51,25 +52,25 @@ class Mailer
     }
 
 
-    public function sendMail()
+    public function sendMail($mail)
     {
 
+        $this->recipent = $mail;
 
         try {
             //Server settings
             $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;
             $this->mail->isSMTP();
-            $this->mail->Host       = 'smtp.example.com';
+            $this->mail->Host       = 'smtp.gmail.com';
             $this->mail->SMTPAuth   = true;
-            $this->mail->Username   = 'user@example.com';
+            $this->mail->Username   = 'flauz.dev@gmail.com';
             $this->mail->Password   = 'secret';
             $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
             $this->mail->Port       = 465;
 
             //Recipients
-            $this->mail->setFrom('from@example.com', 'Mailer');
-            $this->mail->addAddress('joe@example.net', 'Joe User');
-            $this->mail->addAddress('ellen@example.com');
+            $this->mail->setFrom('flauz.dev@gmail.com', 'Mailer');
+            $this->mail->addAddress($this->recipent);
 
             //Content
             $this->mail->isHTML(true);
@@ -79,7 +80,7 @@ class Mailer
             $this->mail->send();
             echo 'Message has been sent';
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }
     }
 }

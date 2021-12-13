@@ -29,7 +29,7 @@ CREATE TABLE `gkvw0_user` (
   `pwd` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `role` tinyint(4) NOT NULL DEFAULT '0',
-  `token` INT(16) NOT NULL,
+  `token` TEXT,
   `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `dateUpdated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -1,33 +1,39 @@
 <?php
 
 namespace App\Core;
-use App\Models\User;
 
-class Security
+use App\Core\Singleton;
+
+class Security extends Singleton
 {
 
-    public static function isConnected(){
 
+	public function __construct()
+	{
+	}
+
+
+	public function isConnected($email)
+	{
 		session_start();
 
-		return isset($_SESSION['id']);
-
-	}
-
-	public static function getConnectedUser(){
-
-		if(self::isConnected()){
-			$user = new User();
-			if($user->setAllFromData(["id" => $_SESSION['id']])){
-				if($user->isDeleted())
-					return null;
-				return $user;
-			}
+		$email = htmlspecialchars($email);
+		$query = "SELECT * FROM gkvw0_users WHERE email = ?";
+		$prepare = $this->getPDO()->prepare($query);
+		$prepare->execute(array($email));
+		if ($prepare->rowCount() > 0) {
+			$resInfosUser = $prepare->fetch();
+			$_SESSION['id'] = $resInfosUser;
 		}
-		return null;
 	}
 
-    public static function generateToken(){
-        return substr(md5(uniqid(true)), 0, 16);
-    }
+	public static function getUser($email)
+	{
+		return (new self)->isConnected($email);
+	}
+
+	public static function generateToken()
+	{
+		return substr(md5(uniqid(true)), 0, 16);
+	}
 }
