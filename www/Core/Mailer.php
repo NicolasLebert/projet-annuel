@@ -29,30 +29,36 @@ class Mailer
         $this->mail = new PHPMailer(true);
     }
 
-    public function setSubject($subject){
+    public function setSubject($subject)
+    {
         $this->subject = $subject;
     }
 
-    public function getSubject(){
+    public function getSubject()
+    {
         return $this->subject;
     }
 
-    public function setBody($body){
+    public function setBody($body)
+    {
         $this->body = $body;
     }
 
-    public function getBody(){
+    public function getBody()
+    {
         return $this->body;
     }
 
 
-    public static function sendActivationMail($user){
+    public static function sendActivationMail($user)
+    {
         return (new self)->setBody('This is the body');
-         return (new self)->setSubject('New user');
+        return (new self)->setSubject('New user');
+        return (new self)->sendMail($user->getMail(), $user->getId(), $user->getToken());
     }
 
 
-    public function sendMail($mail)
+    public function sendMail($mail, $id, $token)
     {
 
         $this->recipent = $mail;
@@ -75,7 +81,7 @@ class Mailer
             //Content
             $this->mail->isHTML(true);
             $this->mail->Subject = 'Here is the subject';
-            $this->mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+            $this->mail->Body    = 'http://localhost:8080/registerconfirm?id=' . $id . '&token=' . $token;
 
             $this->mail->send();
             echo 'Message has been sent';

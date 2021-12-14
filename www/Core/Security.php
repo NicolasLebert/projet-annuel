@@ -2,9 +2,9 @@
 
 namespace App\Core;
 
-use App\Core\Singleton;
+use App\Core\Database;
 
-class Security extends Singleton
+class Security extends Database
 {
 
 
@@ -15,8 +15,6 @@ class Security extends Singleton
 
 	public function isConnected($email)
 	{
-		session_start();
-
 		$email = htmlspecialchars($email);
 		$query = "SELECT * FROM gkvw0_users WHERE email = ?";
 		$prepare = $this->getPDO()->prepare($query);

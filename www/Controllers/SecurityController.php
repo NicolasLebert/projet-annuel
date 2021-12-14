@@ -7,7 +7,6 @@ use App\Core\Form;
 use App\Core\FormVerification;
 use App\Core\Security;
 use App\Core\Mailer;
-use App\Core\Singleton;
 use App\Models\User;
 
 class SecurityController
@@ -15,6 +14,11 @@ class SecurityController
 
 	public function login()
 	{
+		session_start();
+
+		$userRegister = new User();
+		$bdd = $userRegister->getPDO();
+
 		//Afficher la vue login à l'interieur du template front
 		$v = new View("Security/login", "front");
 	}
@@ -30,7 +34,7 @@ class SecurityController
 
 		session_start();
 
-		
+
 		$userRegister = new User();
 		// $bdd = $userRegister->getPDO();
 
@@ -64,7 +68,7 @@ class SecurityController
 					//     $_SESSION['id'] = $resInfosUser;
 					// }
 					$userRegister->getUser($_POST["email"]);
-					// Mailer::sendActivationMail($userRegister);
+					Mailer::sendActivationMail($userRegister);
 					// print('OHYEAH :' . $token);
 				} else {
 					$v->__set("errors", ["Vos mots de passe ne correspondent pas"]);
@@ -81,5 +85,26 @@ class SecurityController
 	public function confirmRegister()
 	{
 		$user = new User();
+		if (isset($_GET['id']) and isset($_GET['token'])) {
+			$id = $_GET['id'];
+			$token = $_GET['token'];
+			$getUser = $user->getUser();
+			if ($user->rowCount() > 0) {
+				if ($user['confirme'] != 1) {
+					$query = "UPDATE gkvw0_users SET status = ? WHERE id = ?";
+					$setConfirmUser = $user->getPDO()->prepare($query);
+					$setConfirmUser->execute(array(1, $id));
+					$_SESSION['token'] = $token;
+					header('Location: /');
+				} else {
+					$_SESSION['token'] = $token;
+					header('Location: /');
+				}
+			} else {
+				echo "Confirmation impossible, l'utilisateur n'existe pas";
+			}
+		} else {
+			echo "Confirmation impossible, l'utilisateur n'existe pas";
+		}
 	}
 }
