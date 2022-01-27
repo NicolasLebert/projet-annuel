@@ -11,7 +11,8 @@ class Database
 	{
 		try{
 			
-			$this->db = new \PDO("mysql:host=database;dbname=mvcdocker2;port=3306","root","password");
+			// $this->db = new \PDO("mysql:host=database;dbname=mvcdocker2;port=3306","root","password");
+			$this->db = new \PDO("mysql:host=localhost;dbname=u246625984_mybdd;port=3306","u246625984_mybddroot","Mybddrootpassword88");
 			
 			$this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     		$this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
@@ -24,14 +25,17 @@ class Database
 
 	}
 
-	public function ConnexionValidation ($email, $password) {
-		$sql =  'SELECT email, password FROM User WHERE email="'.$email.'" AND password="'.$password.'"';
-		$result = $this->db->query($sql);
-		print_r($result->fetch());
-		// $result['email'];
-		return $result;
+	public function getUseridbyEmail($email){
+		$sql = 'SELECT id FROM User WHERE email = :email';
+		$prepare = $this->db->prepare($sql);
+		$result = $prepare->execute(['email' => $email]);
+		$compare = $prepare->fetchAll();
+		return $compare[0]['id'];
 	}
 
+	public function prepare($query){
+		return $this->db->prepare($query);
+	}
 
 	//Insérer en base de données l'objet
 	//Ou le mettre à jour (INSERT ou UPDATE)
@@ -55,7 +59,7 @@ class Database
 		if (is_null($this->getId())) {
 
 
-			$sql = " INSERT INTO gkvw0_".$table." 
+			$sql = " INSERT INTO ".$table." 
 			(". implode(",", array_keys($data)) .") 
 			VALUES 
 			(:". implode(",:", array_keys($data)) .")";

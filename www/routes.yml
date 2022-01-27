@@ -1,4 +1,3 @@
-
 /:
   controller : "Main" 
   action : "default"
@@ -19,7 +18,10 @@
   controller : "Security" 
   action : "register"
 
-
-/toto:
+/users:
   controller : "Main" 
-  action : "toto"
+  action : "users"
+
+/help:
+  controller : "Main" 
+  action : "help"

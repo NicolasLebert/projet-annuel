@@ -27,14 +27,10 @@ class User extends Database
 		parent::__construct();
 	}
 
-
-
-
 	public function __toString(){
 		return $this->firstname." ".$this->lastname;
 	}
-
-
+    
     /**
      * @return null
      */
@@ -112,7 +108,7 @@ class User extends Database
      */
     public function setPwd($pwd): void
     {
-        $this->pwd = password_hash($pwd, PASSWORD_DEFAULT);
+        $this->pwd = crypt($pwd, "projet");
     }
 
     /**
@@ -177,99 +173,6 @@ class User extends Database
     public function setDateUpdated($dateUpdated): void
     {
         $this->dateUpdated = $dateUpdated;
-    }
-
-
-
-    public function formRegister () {
-
-        return [
-                    "action"=>"",
-                    "method"=>"POST",
-                    "submit"=>"S'inscrire",
-                    "inputs"=> [
-                                    "firstname"=>[
-                                                    "type"=>"text", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre Prénom",
-                                                    "minLength"=>2,
-                                                    "value"=>"Yves",
-                                                    "error"=>"Votre prénom doit faire au minimum 2 caractères"
-                                                ],
-                                    "lastname"=>[
-                                                    "type"=>"text", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre Nom",
-                                                    "minLength"=>2,
-                                                    "error"=>"Votre nom doit faire au minimum 2 caractères"
-                                                ],
-                                    "country"=>[
-                                                    "type"=>"select", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre Pays",
-                                                    "options"=>["fr","en"]
-                                                ],
-                                    "email"=>[
-                                                    "type"=>"email", 
-                                                    "unicity"=>"email",
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre Email",
-                                                    "error"=>"Votre email n'est pas correct"
-                                                ],
-                                    "password"=>[
-                                                    "type"=>"password", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre mot de passe",
-                                                    "minLength"=>4,
-                                                    "maxLength"=>32,
-                                                    "error"=>"Votre mot de passe doit faire entre 4 et 32 caractères"
-                                                ],
-                                    "passwordConfirm"=>[
-                                                    "type"=>"password", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Confirmation du mot de passe",
-                                                    "confirm"=>"password",
-                                                    "error"=>"Les mots de passe ne correspondent pas"
-                                                ],
-                                    "captcha"=>[
-                                                    "type"=>"captcha", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Saisir le captcha",
-                                                    "src"=>"/captcha.php",
-                                                    "error"=>"Le captcha ne correspond pas"
-                                                ]
-                                                            
-
-
-                                ]
-                ];
-
-    }
-    public function formLogin () {
-
-        return [
-                    "action"=>"",
-                    "method"=>"POST",
-                    "submit"=>"Connexion",
-                    "inputs"=> [
-                                    "email"=>[
-                                                    "type"=>"email", 
-                                                    "unicity"=>"email",
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre Email",
-                                                    "error"=>"Votre email n'est pas correct"
-                                                ],
-                                    "password"=>[
-                                                    "type"=>"password", 
-                                                    "required"=>true,
-                                                    "placeholder"=>"Votre mot de passe",
-                                                    "minLength"=>4,
-                                                    "maxLength"=>32,
-                                                    "error"=>"Votre mot de passe doit faire entre 4 et 32 caractères"
-                                                ]
-                                ]
-                ];
-
     }
 }
 

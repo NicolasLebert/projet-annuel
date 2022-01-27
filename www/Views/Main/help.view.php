@@ -12,24 +12,26 @@
         <div class="esgi-grid-cell esgi-grid10">
             <div class="esgi-grid-gutter">
                 <div class="esgi-home">
-                    <h2>Bien le bonjour à toi visiteur!</h2>
+                    <h2>Comment le site est fait ?</h2>
     
                     <p>
-                        Cette plateforme web est dédié à la réalisation de mon <b>projet universitaire</b>.
+                        Site réalisé intégralement sous PHP version 7.3 en architecture <b>MVC</b>.
                     </p>
     
                     <p>
-                        Conformément aux règles imposées, ce site comporte plusieurs fonctionalités :
+                        Site WEB hébergé sur <a href="https://www.hostinger.fr/">Hostinger</a>
                     </p>
     
-                    <ul>
-                        <li>Inscription utilisateur (notification automatique par mail)</li>
-                        <li>Connexion utilisateur</li>
-                        <li>Consultation des autres utilisateurs</li>
-                    </ul>
-    
                     <p>
-                        Merci pour la visite !
+                        Base de donnée MySQL géré par PHPmyadmin, et FTP directement intégré sur Hostinger
+                    </p>
+
+                    <p>
+                        Nom de domaine indisponible jusqu'au 26/01/2023
+                    </p>
+
+                    <p>
+                        Contactez moi pour d'avantages d'informations : <a href="mailto:lebert.nicolas@yahoo.fr?subject=Site WEB">lebert.nicolas@yahoo.fr</a>
                     </p>
                 </div>
             </div>

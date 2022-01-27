@@ -10,12 +10,12 @@
     table { width: 100%;
         thead {
             tr {border-bottom: 1px solid @primary-color;
-                th { font-size: 1.125rem; font-weight: bolder; color: @font-color-1; padding: 24px 0;}
+                th { font-size: 1.125rem; font-weight: bolder; color: @font-color-1; padding: 24px 0; text-align: center;}
             }
         }
         tbody {
             tr{border-bottom: 1px solid @secondary-color;
-                td{padding: 16px 0;
+                td{padding: 16px 0;text-align: center;
                     &.yes:before {content: "\e90d"; .icon; color: @font-color-1; font-size: 1rem;}
                     &.no:before {content: "\e905"; .icon; color: @font-color-1; font-size: 1rem;}
                     &.actions:before {content: "\e919"; .icon; color: @font-color-1; font-size: 1rem; margin-right: 8px; cursor: pointer;}
